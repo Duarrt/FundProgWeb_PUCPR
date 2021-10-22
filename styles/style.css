@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+}
+
+.header {
+    width: 100%;
+	padding: 10px;
+    border: 1px solid black;
+}
+
+.header .icon-header {
+	width: 10%;
+	float: left;
+	display: flex;
+}
+
+.header .title-header{
+	width: 90%;
+	text-align: center;
+	align-content: center;
+	display: flex;
+}
+
+.icon-home {
+	width: 100%;
+	max-width: 40px;
+	height: auto;
+}
+
+.menu {
+    width: 100%;
+    text-align: center;
+    border: 2px solid black;    
+}
+
+.main {
+    width: 70%;
+	margin: auto;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.ad1 {
+    width: 15%;
+    float: left;
+    margin-top: 3px;
+    text-align: center;
+    align-content: center;
+}
+
+.ad2 {
+    width: 15%;
+    float: right;
+    margin-top: 3px;
+    text-align: center;
+    align-content: center;
+}
+
+.footer {
+    width: 100%;
+    border: 1px solid black;
+    float: left;
+    text-align: center;
+}
