@@ -14,6 +14,12 @@
     <?php
         @$id = $_GET["id"];
         $pg["inicio"] = "inicio.html";
+        $pg["inicioLogout"] = "logout.php";
+        $pg["login1"] = "login.html";
+        $pg["login2"] = "login.php";
+        $pg["user_menu"] = "menuUser.html";
+        $pg["admin_menu"] = "menuAdmin.html";
+
         if(empty($id)) $id = "inicio";
     ?>     
 
@@ -27,11 +33,11 @@
         </div>
         <div class="menu">
             <ul>
-                <li><a href="index.php?id=inicio">INÍCIO</a></li>
+                <li><a href="index.php?id=inicioLogout">INÍCIO</a></li>
                 <li><a href="#">LINK</a></li>
                 <li><a href="#">LINK</a></li>
                 <li><a href="#">LINK</a></li>
-                <li><a href="#">LINK</a></li>
+                <li><a href="index.php?id=login1">LOGIN</a></li>
             </ul>
         </div>
  <!--
