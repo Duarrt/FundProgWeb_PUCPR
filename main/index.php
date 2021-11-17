@@ -11,7 +11,7 @@
     </head>
     <body>
 
-    <php
+    <?php
         @$id = $_GET["id"];
         $pg["inicio"] = "inicio.html";
         if(empty($id)) $id = "inicio";
@@ -28,10 +28,10 @@
         <div class="menu">
             <ul>
                 <li><a href="index.php?id=inicio">INÍCIO</a></li>
-                <li><a href="#">.</a></li>
-                <li><a href="#">.</a></li>
-                <li><a href="#">.</a></li>
-                <li><a href="#">.</a></li>
+                <li><a href="#">LINK</a></li>
+                <li><a href="#">LINK</a></li>
+                <li><a href="#">LINK</a></li>
+                <li><a href="#">LINK</a></li>
             </ul>
         </div>
  <!--
