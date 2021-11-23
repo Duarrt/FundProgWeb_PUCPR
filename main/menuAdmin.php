@@ -6,7 +6,14 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
+<<<<<<< HEAD
         <h1>Bem vindo, <?php echo $usuario;?>!</h1>
+=======
+        <?php
+        $usuario = $_SESSION["usuario"];
+        
+        <h1>Bem vindo, $usuario</h1>
+>>>>>>> 08cc5de58261cb025bdc90d646dde66ccb31f937
         <h4>Por favor, selecione alguma de nossas ferramentas do sistema abaixo:</h4>
         <div class="tools">
             <ul>
@@ -14,6 +21,7 @@
                     <li><a href="#">1. Visualizar itens emprestados</a></li>
                 </button>
                 <div id="demo" class="collapse">
+<<<<<<< HEAD
                     <table border="2" class="table">
                         <tr>
                             <th>ID</th>
@@ -47,6 +55,9 @@
                             }    
                         ?>
                     </table>
+=======
+                    Todos os itens emprestados.
+>>>>>>> 08cc5de58261cb025bdc90d646dde66ccb31f937
                 </div>
                 <br>
                 <br><button type="button" class="btn" data-toggle="collapse" data-target="#demo">
@@ -57,5 +68,9 @@
                 </div>
             </ul>
         </div>
+<<<<<<< HEAD
+=======
+        ?>
+>>>>>>> 08cc5de58261cb025bdc90d646dde66ccb31f937
     </body>
 </html>
