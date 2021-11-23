@@ -23,15 +23,14 @@ if($userRow == 1 && $passwrdRow == 1){
 
         $nivel = $verificar['admin'];
         
+        @$id = $_GET["id"];
         if($nivel==true){
-            $_SESSION["admin"]=$usuario;
-            @$id = $_GET["id"];
+            $_SESSION["usuario"]=$usuario;
             $id = "admin_menu";
             include $pg[$id];
 
         }elseif($nivel==false){
             $_SESSION["usuario"]=$usuario;
-            @$id = $_GET["id"];
             $id = "user_menu";
             include $pg[$id];
 
@@ -40,7 +39,7 @@ if($userRow == 1 && $passwrdRow == 1){
         }   
     }
 } else{
-    echo "<script>alert('login incorreto ...')</script>";
+    echo "<script>alert('login incorreto...')</script>";
     echo "<meta http-equiv='refresh' content='0; URL=../main/index.php?id=inicio'/>";
 }
 

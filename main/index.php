@@ -17,8 +17,9 @@
         $pg["inicioLogout"] = "logout.php";
         $pg["login1"] = "login.html";
         $pg["login2"] = "login.php";
-        $pg["user_menu"] = "menuUser.html";
-        $pg["admin_menu"] = "menuAdmin.html";
+        $pg["user_menu"] = "menuUser.php";
+        $pg["admin_menu"] = "menuAdmin.php";
+        $pg["user_items"] = "user_items.php";
 
         if(empty($id)) $id = "inicio";
     ?>     
