@@ -1,36 +1,33 @@
 <?php
 
-$con = mysqli_connect('localhost', 'root', '', 'pucpr');
+require_once "conexao.php";
+session_start();
 
-if(!$con) {
-    die('Não foi possível conectar: '.mysqli_error());
-}
-
-$usuario = $_POST["usuario"];
-$user = "SELECT * from usuarios where usuario like '$usuario'";
-
+$email = $_POST["email"];
 $senha = $_POST["senha"];
-$passwrd = "SELECT * from usuarios where senha like '$senha'";
 
-$userResult = $con->query($user) or die("Erro: ".mysqli_error($con));
-$userRow = mysqli_num_rows($userResult);
-$passwrdResult = $con->query($passwrd) or die("Erro: ".mysqli_error($con));
-$passwrdRow = mysqli_num_rows($passwrdResult);
+$sql = "SELECT * from usuarios where email = '$email' and senha = '$senha'";
 
-if($userRow == 1 && $passwrdRow == 1){
+$Result = $con->query($sql) or die("Erro: ".mysqli_error($con));
+$row = mysqli_num_rows($Result);
 
-    while($verificar = mysqli_fetch_array($userResult)){
+if($row > 0){
+
+    while($verificar = mysqli_fetch_array($Result)){
 
         $nivel = $verificar['admin'];
+        $usuario = $verificar['usuario'];
         
         @$id = $_GET["id"];
         if($nivel==true){
-            $_SESSION["usuario"]=$usuario;
+            $_SESSION["usuario"] = $usuario;
+            $_SESSION["logado"] = true;
             $id = "admin_menu";
             include $pg[$id];
 
         }elseif($nivel==false){
-            $_SESSION["usuario"]=$usuario;
+            $_SESSION["usuario"] = $usuario;
+            $_SESSION['logado'] = true;
             $id = "user_menu";
             include $pg[$id];
 
@@ -40,7 +37,7 @@ if($userRow == 1 && $passwrdRow == 1){
     }
 } else{
     echo "<script>alert('login incorreto...')</script>";
-    echo "<meta http-equiv='refresh' content='0; URL=../main/index.php?id=inicio'/>";
+    echo "<meta http-equiv='refresh' content='0; URL=../main/index.php?id=login'/>";
 }
 
 

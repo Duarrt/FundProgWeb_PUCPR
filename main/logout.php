@@ -1,5 +1,11 @@
 <?php
-session_unset();
+
+if(!isset($_SESSION)) {
+
+    session_start();
+
+}
+
 session_destroy();
 
 @$id = $_GET["id"];

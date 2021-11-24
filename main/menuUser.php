@@ -6,9 +6,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
-            <h1>Bem vindo, <?php echo $usuario;?>!</h1>
-            <h4>Por favor, selecione alguma de nossas ferramentas do sistema abaixo:</h4>
-        
+        <h1>Bem vindo, <?php echo $usuario;?>!</h1>
+        <h4>Por favor, selecione alguma de nossas ferramentas do sistema abaixo:</h4>
         <div class="tools">
             <ul>
                 <button type="button" class="btn" data-toggle="collapse" data-target="#demo">
@@ -25,7 +24,9 @@
                         </tr>
                         <?php
                             //require "login.php";
-                                    
+                            $data_atual = date('Y-m-d');
+                            $data_atualT = strtotime($data_atual);
+                            
                             $script_registro = "SELECT * FROM `emprestimos`;";
                             $registro = mysqli_query($con, $script_registro);
                             $script_usuario = "SELECT usuario FROM usuarios INNER JOIN emprestimos ON emprestimos.id_usuario = usuarios.id AND usuarios.usuario LIKE '".$_SESSION['usuario']."';";
@@ -38,13 +39,23 @@
                                         $nome = $emprest_user["usuario"];                                  
                                         $data_emprest = $emprest["data_emprestimo"];
                                         $data_devol = $emprest["data_devolucao"];
+                                        $data_devolT = strtotime($data_devol);
+
                                         echo "<tr>
-                                                <td>$id</td>
-                                                <td>$cod</td>
-                                                <td>$nome</td>
-                                                <td>$data_emprest</td>
-                                                <td>$data_devol</td>
-                                            </tr>";
+                                            <td>$id</td>
+                                            <td>$cod</td>
+                                            <td>$nome</td>
+                                            <td>$data_emprest</td>";  
+                                                if($data_atualT > $data_devolT) {
+                                                    echo "<td class='atrasado' style='color:red'>"; 
+                                                    echo $data_devol;
+                                                    echo "</td>";
+                                                } else {
+                                                    echo "<td class='regular'>"; 
+                                                    echo $data_devol;
+                                                    echo "</td>";
+                                                }    
+                                        echo "</tr>";
                                     }    
                                 }
                             }    

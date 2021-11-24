@@ -1,7 +1,20 @@
-<!DOCTYPE html>
 <?php
+    require_once "conexao.php";
     session_start();
-?>
+
+    @$id = $_GET["id"];
+    $pg["index"] = "index.php";
+    $pg["aaaaaaaaaaaaaaaa"] = "inicio.html";
+    $pg["logout"] = "logout.php";
+    $pg["inicio"] = "login.html";
+    $pg["login"] = "login.php";
+    $pg["user_menu"] = "menuUser.php";
+    $pg["admin_menu"] = "menuAdmin.php";
+    $pg["user_items"] = "user_items.php";
+
+    if(empty($id)) $id = "inicio";
+?> 
+
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
@@ -9,21 +22,7 @@
         <link rel="stylesheet" href="../styles/style.css" type="text/css">
         <title>Fundamentos de Programação WEB - PUCPR</title>
     </head>
-    <body>
-
-    <?php
-        @$id = $_GET["id"];
-        $pg["inicio"] = "inicio.html";
-        $pg["inicioLogout"] = "logout.php";
-        $pg["login1"] = "login.html";
-        $pg["login2"] = "login.php";
-        $pg["user_menu"] = "menuUser.php";
-        $pg["admin_menu"] = "menuAdmin.php";
-        $pg["user_items"] = "user_items.php";
-
-        if(empty($id)) $id = "inicio";
-    ?>     
-
+    <body>  
         <div class="header">
             <div class="icon-header">
 				<a href="index.php?id=inicio"><img src="../images/home.png"/></a>
@@ -32,13 +31,27 @@
 				<h2>GERENCIAMENTO DE ITENS EMPRESTADOS</h2>
 			</div>
         </div>
-        <div class="menu">
+        <?php
+            if(!isset($_SESSION['logado'])) {
+                echo "<div class='menu' style='visibility: hidden;'>";
+            } else {
+                echo "<div class='menu'>";
+            }    
+        ?>
+        
             <ul>
-                <li><a href="index.php?id=inicioLogout">INÍCIO</a></li>
+                <li><a href="index.php?id=aaaaaaaaaaaaaaaa">INÍCIO</a></li>
                 <li><a href="#">LINK</a></li>
                 <li><a href="#">LINK</a></li>
                 <li><a href="#">LINK</a></li>
-                <li><a href="index.php?id=login1">LOGIN</a></li>
+                <?php
+                    if(isset($_SESSION['logado'])) {
+                        $href = "index.php?id=logout";
+                        echo "<li><a href='";
+                        echo $href;
+                        echo "'>SAIR</a></li>";
+                    }    
+                ?>
             </ul>
         </div>
  <!--
