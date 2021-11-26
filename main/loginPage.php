@@ -1,10 +1,13 @@
+<?php
+    require_once "conexao.php";
+?>
 <html>
     <head>
         <meta charset="utf-8"/>
         <link rel="stylesheet" type="text/css" href="../styles/form.css">
     </head>
     <body>
-        <form action="index.php?id=login" method="post">
+        <form action="../main/index.php?id=login" method="post">
             <h3>ENTRAR NO SISTEMA</h3>
             <div>
                 <label for="name">Email: </label><input type="text" name="email" required><br>

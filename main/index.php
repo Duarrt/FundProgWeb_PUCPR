@@ -1,18 +1,28 @@
 <?php
-    require_once "conexao.php";
-    session_start();
-
     @$id = $_GET["id"];
-    $pg["index"] = "index.php";
-    $pg["aaaaaaaaaaaaaaaa"] = "inicio.html";
-    $pg["logout"] = "logout.php";
-    $pg["inicio"] = "login.html";
-    $pg["login"] = "login.php";
-    $pg["user_menu"] = "menuUser.php";
-    $pg["admin_menu"] = "menuAdmin.php";
-    $pg["user_items"] = "user_items.php";
+    $page["index"] = "index.php";
+    $page["inicio"] = "inicio.php";
+    $page["menu_emprestimo"] = "menuEmprestimo.php";
+    $page["logout"] = "logout.php";
+    $page["login_page"] = "loginPage.php";
+    $page["login"] = "login.php";
+    $page["editar_usuario"] = "editarUsuario.php";
+    $page["item_exclusao"] = "itemExclusao.php";
+    $page["user_menu"] = "menuUser.php";
+    $page["admin_menu"] = "menuAdmin.php";
+    $page["user_items"] = "user_items.php";
+    $page["conexao"] = "conexao.php";
 
-    if(empty($id)) $id = "inicio";
+    $page["item_exclusao1"] = "itemExclusao.php";
+    $page["item_exclusao2"] = "itemExclusao.php";
+    $page["item_exclusao3"] = "itemExclusao.php";
+    $page["item_exclusao4"] = "itemExclusao.php";
+
+    $page["item_emprestimo1"] = "itemEmprestimo.php";
+    $page["item_emprestimo2"] = "itemEmprestimo.php";
+    $page["item_emprestimo3"] = "itemEmprestimo.php";
+
+    if(empty($id)) $id = "login_page";
 ?> 
 
 <html lang="pt-br">
@@ -32,26 +42,29 @@
 			</div>
         </div>
         <?php
-            if(!isset($_SESSION['logado'])) {
+            if(isset($_SESSION['logado'])) {
                 echo "<div class='menu' style='visibility: hidden;'>";
             } else {
                 echo "<div class='menu'>";
             }    
         ?>
-        
             <ul>
-                <li><a href="index.php?id=aaaaaaaaaaaaaaaa">INÍCIO</a></li>
-                <li><a href="#">LINK</a></li>
-                <li><a href="#">LINK</a></li>
-                <li><a href="#">LINK</a></li>
-                <?php
-                    if(isset($_SESSION['logado'])) {
-                        $href = "index.php?id=logout";
+                <li><a href="index.php?id=inicio">INÍCIO</a></li>
+                <li><a href="index.php?id=menu_emprestimo">EMPRESTAR ITENS</a></li>
+            <?php    
+                if(isset($_SESSION['admin'])) {
+                    $href = "index.php?id=admin_menu";
                         echo "<li><a href='";
                         echo $href;
-                        echo "'>SAIR</a></li>";
-                    }    
-                ?>
+                        echo "'>ADMINISTRAR SISTEMA</a></li>";
+                } else {
+                    $href = "index.php?id=user_menu";
+                        echo "<li><a href='";
+                        echo $href;
+                        echo "'>EDITAR CONTA</a></li>";
+                }
+            ?>    
+                <li><a href="index.php?id=logout">SAIR</a></li>
             </ul>
         </div>
  <!--
@@ -60,7 +73,7 @@
         </div>
 -->
         <div class="main">
-            <?php include $pg[$id];?>
+            <?php include $page[$id];?>
         </div>
 <!--
         <div class="main ad2">

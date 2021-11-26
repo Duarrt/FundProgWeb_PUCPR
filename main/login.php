@@ -1,10 +1,9 @@
 <?php
-
 require_once "conexao.php";
 session_start();
 
-$email = $_POST["email"];
-$senha = $_POST["senha"];
+$email = $_POST['email'];
+$senha = $_POST['senha'];
 
 $sql = "SELECT * from usuarios where email = '$email' and senha = '$senha'";
 
@@ -18,26 +17,18 @@ if($row > 0){
         $nivel = $verificar['admin'];
         $usuario = $verificar['usuario'];
         
-        @$id = $_GET["id"];
+        $_SESSION['usuario'] = $usuario;
+        $_SESSION['logado'] = true;
+
         if($nivel==true){
-            $_SESSION["usuario"] = $usuario;
-            $_SESSION["logado"] = true;
-            $id = "admin_menu";
-            include $pg[$id];
-
-        }elseif($nivel==false){
-            $_SESSION["usuario"] = $usuario;
-            $_SESSION['logado'] = true;
-            $id = "user_menu";
-            include $pg[$id];
-
-        }elseif($nivel==null){
-            echo "<script>alert('Login Incorreto ...')</script>";
-        }   
+            $_SESSION['admin'] = true;
+        }
+        echo "<meta http-equiv='refresh' content='0; URL=../main/index.php?id=inicio'/>";
     }
 } else{
+    session_destroy();
     echo "<script>alert('login incorreto...')</script>";
-    echo "<meta http-equiv='refresh' content='0; URL=../main/index.php?id=login'/>";
+    echo "<meta http-equiv='refresh' content='0; URL=../main/index.php?id=login_page'/>";
 }
 
 

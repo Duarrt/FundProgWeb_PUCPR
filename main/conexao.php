@@ -1,4 +1,4 @@
-<php
+<?php
     $con = mysqli_connect('localhost', 'root', '', 'pucpr');
 
     if(!$con) {
